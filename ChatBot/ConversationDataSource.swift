@@ -1,16 +1,18 @@
 import Foundation
 class ConversationDataSource {
     
+    /// The store for the Messages
+    var messages = [openingLine]
     /// The number of Messages in the conversation
-    var messageCount = 0
-    var messages = [Message]()
+    var messageCount: Int {
+        return messages.count
+    }
     
     /// Add a new question to the conversation
     func add(question: String) {
         print("Asked to add question: \(question)")
         let message = Message(date: Date(), text: question, type: .question)
         messages.append(message)
-        messageCount += 1
     }
     
     /// Add a new answer to the conversation
@@ -18,7 +20,6 @@ class ConversationDataSource {
         print("Asked to add answer: \(answer)")
         let message = Message(date: Date(), text: answer, type: .answer)
         messages.append(message)
-        messageCount += 1
     }
     
     /// The Message at a specific point in the conversation
